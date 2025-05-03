@@ -39,10 +39,14 @@ export default function Hero() {
             </div>
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
               Hi, I'm Juan Pablo Ludueña, a web developer and Computer Science
-              student. Join me in the journey of my work experience and academic
-              projects.
+              student. <br /> Join me in the journey of my work experience and
+              academic projects.
             </p>
-            <Button className="md:w-80 md:h-16 w-60 h-12" id="button" text="See my Work" />
+            <Button
+              className="md:w-80 md:h-16 w-60 h-12"
+              id="button"
+              text="See my Work"
+            />
           </div>
         </header>
         {/* RIGHT: 3D MODEL */}
