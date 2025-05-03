@@ -1,7 +1,4 @@
-const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-];
+import { words } from "../constants/index";
 
 export default function Hero() {
   return (
@@ -38,6 +35,11 @@ export default function Hero() {
               <h1>into Real Projects</h1>
               <h1>that Deliver Results</h1>
             </div>
+            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
+              Hi, I'm Juan Pablo Ludueña, a web developer and Computer Science
+              student. Join me in the journey of my work experience and academic
+              projects.
+            </p>
           </div>
         </header>
         {/* RIGHT: 3D MODEL */}
