@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import HeroExperience from "../components/HeroModels/HeroExperience";
 import { words } from "../constants/index";
 import gsap from "gsap";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 export default function Hero() {
   useGSAP(() => {
@@ -75,6 +76,8 @@ export default function Hero() {
           </div>
         </figure>
       </div>
+      
+      <AnimatedCounter />
     </section>
   );
 }
