@@ -4,6 +4,7 @@ import Showcase from "./sections/Showcase";
 import NavBar from "./components/NavBar";
 import FeatureCards from "./sections/FeatureCards";
 import Experience from "./sections/Experience";
+import TechStack from "./sections/TechStack";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       {/* FEAT: LOGO SHOWCASE */}
       <FeatureCards />
       <Experience />
+      <TechStack />
     </>
   );
 };
