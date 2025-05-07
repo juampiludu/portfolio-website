@@ -22,7 +22,13 @@ export default function Contact() {
 
     setLoading(true);
 
+    const formData = form.current;
+
     try {
+      if (formData.name === '' || formData.email === '' || formData.message === '') {
+        throw new Error("Please complete all fields.")
+      }
+
       await emailjs.sendForm(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
