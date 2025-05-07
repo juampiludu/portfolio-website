@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/Models/Contact/ContactExperience";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const formRef = useRef(null);
@@ -11,12 +12,35 @@ export default function Contact() {
     message: "",
   });
 
-  const handleChange = (e) => {
+  function handleChange(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-  };
+  }
 
-  function handleSubmit() {}
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("EMAILJS ERROR", error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <section id="contact" className="flex-center section-padding">
@@ -73,7 +97,7 @@ export default function Contact() {
                   />
                 </div>
 
-                <button type="submit">
+                <button type="submit" disabled={loading}>
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">

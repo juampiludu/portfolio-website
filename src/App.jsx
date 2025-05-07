@@ -9,7 +9,7 @@ import Contact from "./sections/Contact";
 
 const App = () => {
   return (
-    <>
+    <React.StrictMode>
       <NavBar />
       <Hero />
       <Showcase />
@@ -18,7 +18,7 @@ const App = () => {
       <Experience />
       <TechStack />
       <Contact />
-    </>
+    </React.StrictMode>
   );
 };
 
