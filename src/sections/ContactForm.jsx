@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { isEmail, isEmpty } from "../util/validation";
 import emailjs from "@emailjs/browser";
 
 const FORM_DEFAULT_VALUE = { name: "", email: "", message: "" };
@@ -20,9 +21,12 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
-      console.log(form);
-      if (!form.name || !form.email || !form.message) {
+      if (isEmpty(form.name) || isEmpty(form.email) || isEmpty(form.message)) {
         throw new Error("Please complete all fields.");
+      }
+
+      if (!isEmail(form.email)) {
+        throw new Error("Please use a valid email address.");
       }
 
       await emailjs.sendForm(
@@ -41,6 +45,8 @@ export default function ContactForm() {
       setLoading(false);
     }
   }
+
+  // TODO: useEffect to scroll if message
 
   return (
     <div className="xl:col-span-5">
