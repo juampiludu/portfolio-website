@@ -84,8 +84,8 @@ const techStackIcons = [
 const expCards = [
   {
     review: "",
-    imgPath: "/images/projects/buenaventura.png",
-    logoPath: "/images/logos/buenaventura-logo.png",
+    imgPath: "",
+    logoPath: "/images/logos/logo-bv.png",
     title: "Full Stack Developer - Buenaventura Agronegocios",
     date: "June 2021 - May 2024",
     responsibilities: [
