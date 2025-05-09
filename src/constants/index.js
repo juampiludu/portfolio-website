@@ -100,32 +100,24 @@ const expCards = [
 
 const projects = [
   {
-    name: "El Switcher (Frontend)",
+    name: "El Switcher (Backend + Frontend)",
     description:
-      "Real-time web app built with React and WebSockets for interactive control.",
-    imgPath: "/images/projects/switcher-frontend.png",
-    repoLink: "https://github.com/Ctrl-Z-2024/switcher-ui",
-  },
-  {
-    name: "El Switcher (Backend)",
-    description:
-      "REST API with FastAPI and WebSockets, providing robust real-time feedback.",
-    imgPath: "/images/projects/switcher-backend.png",
-    repoLink: "https://github.com/Ctrl-Z-2024/switcher-api",
-  },
-  {
-    name: "Almanimal",
-    description:
-      "Pet adoption site built with Django, helping connect animals with adopters.",
-    imgPath: "/images/projects/almanimal.png",
-    repoLink: "https://github.com/wilitp/almanimal",
+      "Real-time multiplayer game built with React and FastAPI using WebSockets. I developed both the frontend and backend.It's an academic project.",
+    imgPath: "/images/switcher.png",
+    repoLink: "https://github.com/Ctrl-Z-2024",
+    bgColor: "#e1f2eb"
   },
   {
     name: "Buenaventura Agronegocios",
-    description:
-      "Agricultural business website developed with Django and hosted on AWS.",
-    imgPath: "/images/projects/buenaventura.png",
+    imgPath: "/images/buenaventura.png",
     repoLink: "https://github.com/tobiasjpalacios/Buenaventura",
+    bgColor: "#f6f1e7"
+  },
+  {
+    name: "Graph Coloring Tool (Academic Project)",
+    imgPath: "/images/graph.png",
+    repoLink: "https://github.com/juampiludu/discreta2-proyecto",
+    bgColor: "#eeeeee"
   },
 ];
 

@@ -2,29 +2,22 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import { projects } from "../constants/index";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Showcase() {
   const sectionRef = useRef(null);
-  const project1Ref = useRef(null);
-  const project2Ref = useRef(null);
-  const project3Ref = useRef(null);
+  const projectRefs = useRef([]);
 
   useGSAP(() => {
-    const projects = [
-      project1Ref.current,
-      project2Ref.current,
-      project3Ref.current,
-    ];
-
     gsap.fromTo(
       sectionRef.current,
       { opacity: 0 },
       { opacity: 1, duration: 1.5 }
     );
 
-    projects.forEach((card, index) => {
+    projectRefs.current.forEach((card, index) => {
       gsap.fromTo(
         card,
         { y: 50, opacity: 0 },
@@ -47,37 +40,45 @@ export default function Showcase() {
       <div className="w-full">
         <div className="showcaselayout">
           {/* LEFT */}
-          <div className="first-project-wrapper" ref={project1Ref}>
-            <div className="image-wrapper">
-              <img src="/images/project1.png" alt="Project1" />
+          <div
+            className="first-project-wrapper"
+            ref={(el) => (projectRefs.current[0] = el)}
+          >
+            <div
+              className="image-wrapper"
+              style={{ backgroundColor: projects[0].bgColor }}
+            >
+              <a href={projects[0].repoLink} target="_blank">
+                <img src={projects[0].imgPath} alt={projects[0].name} />
+              </a>
             </div>
             <div className="text-content">
-              <h2>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Necessitatibus a placeat atque facilis totam nobis tempora
-                delectus rerum culpa doloremque?
-              </h2>
+              <h2>{projects[0].name}</h2>
               <p className="text-white-50 md:text-xl">
-                App built with Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit. Vel, aliquam.
+                {projects[0].description}
               </p>
             </div>
           </div>
+
           {/* RIGHT */}
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={project2Ref}>
-              <div className="image-wrapper bg-[#ffefdb]">
-                <img src="/images/project2.png" alt="Project2" />
+            {projects.slice(1).map((project, index) => (
+              <div
+                key={project.name}
+                className="project"
+                ref={(el) => (projectRefs.current[index + 1] = el)}
+              >
+                <div
+                  className="image-wrapper"
+                  style={{ backgroundColor: project.bgColor }}
+                >
+                  <a href={project.repoLink} target="_blank">
+                    <img src={project.imgPath} alt={project.name} />
+                  </a>
+                </div>
+                <h2>{project.name}</h2>
               </div>
-              <h2>Lorem, ipsum dolor.</h2>
-            </div>
-
-            <div className="project" ref={project3Ref}>
-              <div className="image-wrapper bg-[#ffe7eb]">
-                <img src="/images/project3.png" alt="Project3" />
-              </div>
-              <h2>Lorem, ipsum dolor.</h2>
-            </div>
+            ))}
           </div>
         </div>
       </div>
