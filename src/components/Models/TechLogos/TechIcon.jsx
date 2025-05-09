@@ -1,5 +1,6 @@
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 
 export default function TechIcon({ model }) {
   const scene = useGLTF(model.modelPath);
@@ -10,7 +11,9 @@ export default function TechIcon({ model }) {
 
       <directionalLight position={[5, 5, 5]} intensity={1} />
 
-      <Environment preset="city" />
+      <Suspense fallback={null}>
+        <Environment preset="city" />
+      </Suspense>
 
       <OrbitControls enableZoom={false} />
 
