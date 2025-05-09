@@ -125,10 +125,12 @@ const socialImgs = [
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",
+    url: "https://www.linkedin.com/in/juan-pablo-luduena/"
   },
   {
     name: "github",
     imgPath: "/images/github.png",
+    url: "https://github.com/juampiludu"
   },
 ];
 
