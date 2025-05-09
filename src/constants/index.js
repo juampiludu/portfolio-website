@@ -10,6 +10,10 @@ const words = [
   { text: "Code", imgPath: "/images/code.svg" },
   { text: "Learning", imgPath: "/images/learning.svg" },
   { text: "Growth", imgPath: "/images/growth.svg" },
+  { text: "Projects", imgPath: "/images/projects.svg" },
+  { text: "Code", imgPath: "/images/code.svg" },
+  { text: "Learning", imgPath: "/images/learning.svg" },
+  { text: "Growth", imgPath: "/images/growth.svg" },
 ];
 
 const counterItems = [
@@ -61,10 +65,10 @@ const techStackIcons = [
     name: "Docker",
     modelPath: "/models/docker-transformed.glb",
     scale: 1.2,
-    rotation: [0, -Math.PI / 2, 0],
+    rotation: [0, 0, 0],
   },
   {
-    name: "Git Manager",
+    name: "Git",
     modelPath: "/models/git-svg-transformed.glb",
     scale: 0.05,
     rotation: [0, -Math.PI / 4, 0],
@@ -129,6 +133,10 @@ const socialImgs = [
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",
+  },
+  {
+    name: "github",
+    imgPath: "/images/github.png",
   },
 ];
 
