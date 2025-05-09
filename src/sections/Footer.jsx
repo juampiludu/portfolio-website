@@ -5,18 +5,21 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="flex flex-col justify-center">
-          <p>Terms & Conditions</p>
+          <p>Built with React & TailwindCSS</p>
         </div>
         <div className="socials">
           {socialImgs.map((socialImg, index) => (
-            <div key={index} className="icon">
-              <img src={socialImg.imgPath} alt="social icon" />
-            </div>
+            <a href={socialImg.url} target="_blank">
+              <div key={index} className="icon">
+                <img src={socialImg.imgPath} alt="social icon" />
+              </div>
+            </a>
           ))}
         </div>
         <div className="flex flex-col justify-center">
           <p className="text-center md:text-end">
-            © {new Date().getFullYear()} Juan Pablo Ludueña. All rights reserved.
+            © {new Date().getFullYear()} Juan Pablo Ludueña. All rights
+            reserved.
           </p>
         </div>
       </div>
