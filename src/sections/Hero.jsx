@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import Button from "../components/Button";
-import HeroExperience from "../components/HeroModels/HeroExperience";
+import HeroExperience from "../components/Models/HeroModels/HeroExperience";
 import { words } from "../constants/index";
 import gsap from "gsap";
 import AnimatedCounter from "../components/AnimatedCounter";
@@ -52,9 +52,9 @@ export default function Hero() {
                 Transforming
                 <span className="slide">
                   <span className="wrapper">
-                    {words.map((word) => (
+                    {words.map((word, index) => (
                       <span
-                        key={word.text}
+                        key={index}
                         className="flex items-center md:gap-3 gap-1 pb-2"
                       >
                         <img
