@@ -101,7 +101,7 @@ const projects = [
   {
     name: "El Switcher (Backend + Frontend)",
     description:
-      "Real-time multiplayer game built with React and FastAPI using WebSockets. I developed both the frontend and backend.It's an academic project.",
+      "Real-time multiplayer game built with React and FastAPI using WebSockets. I developed both the frontend and backend. It's an academic project.",
     imgPath: "/images/switcher.png",
     repoLink: "https://github.com/Ctrl-Z-2024",
     bgColor: "#e1f2eb"
