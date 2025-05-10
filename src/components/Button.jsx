@@ -1,29 +1,25 @@
-export default function Button({ className, id, text }) {
+export default function Button({
+  className,
+  text,
+  onClick,
+  src,
+  type = "button",
+  disabled = false,
+}) {
   return (
-    <a
-      onClick={(e) => {
-        e.preventDefault();
-
-        const target = document.getElementById("counter");
-
-        if (target && id) {
-          const offset = window.innerHeight * 0.15;
-
-          const top =
-            target.getBoundingClientRect().top + window.scrollY - offset;
-
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      }}
-      className={`${className ?? ""} cta-wrapper`}
+    <button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      className={className}
     >
       <div className="cta-button group">
         <div className="bg-circle" />
         <p className="text">{text}</p>
         <div className="arrow-wrapper">
-          <img src="/images/arrow-down.svg" alt="arrow" />
+          <img src={src} alt="arrow" />
         </div>
       </div>
-    </a>
+    </button>
   );
 }

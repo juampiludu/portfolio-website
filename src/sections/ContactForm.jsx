@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { isEmail, isEmpty } from "../util/validation";
 import emailjs from "@emailjs/browser";
+import Button from "../components/Button";
 
 const FORM_DEFAULT_VALUE = { name: "", email: "", message: "" };
 
@@ -45,8 +46,6 @@ export default function ContactForm() {
       setLoading(false);
     }
   }
-
-  // TODO: useEffect to scroll if message
 
   return (
     <div className="xl:col-span-5">
@@ -98,15 +97,12 @@ export default function ContactForm() {
             />
           </div>
 
-          <button type="submit" disabled={loading}>
-            <div className="cta-button group">
-              <div className="bg-circle" />
-              <p className="text">{loading ? "Sending..." : "Send Message"}</p>
-              <div className="arrow-wrapper">
-                <img src="/images/arrow-down.svg" alt="arrow" />
-              </div>
-            </div>
-          </button>
+          <Button
+            type="submit"
+            disabled={loading}
+            text={loading ? "Sending..." : "Send Message"}
+            src={"/images/arrow-right.svg"}
+          />
 
           {message && <p className="text-white-50 text-xl italic">{message}</p>}
         </form>

@@ -23,6 +23,20 @@ export default function Hero() {
     );
   });
 
+  function handleClick(e) {
+    e.preventDefault();
+
+    const target = document.getElementById("counter");
+
+    if (target) {
+      const offset = window.innerHeight * 0.15;
+
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }
+
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-0">
@@ -62,9 +76,11 @@ export default function Hero() {
               and academic projects.
             </p>
             <Button
-              className="md:w-80 md:h-16 w-60 h-12"
+              className="md:w-80 md:h-16 w-60 h-12 cta-wrapper"
               id="button"
               text="See my Work"
+              src={"/images/arrow-down.svg"}
+              onClick={handleClick}
             />
           </div>
         </header>
