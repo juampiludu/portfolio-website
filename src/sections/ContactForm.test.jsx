@@ -53,6 +53,6 @@ describe("ContactForm", () => {
       screen.getByRole("button", { name: /send message/i })
     );
 
-    expect(await screen.findByText(/PROMISE REJECTED/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Something went wrong/i)).toBeInTheDocument();
   });
 });

@@ -80,7 +80,7 @@ export default function ContactForm() {
           onSubmit={handleSubmit}
           className="w-full flex flex-col gap-7"
         >
-          <div>
+          <div className={`form-input ${fieldErrors.name ? "error" : ""}`}>
             <label htmlFor="name">Your name</label>
             <input
               type="text"
@@ -92,10 +92,10 @@ export default function ContactForm() {
               placeholder="What’s your good name?"
               required
             />
-            {fieldErrors.name && <small>Please input your name</small>}
+            {fieldErrors.name && <span>Please input your name</span>}
           </div>
 
-          <div>
+          <div className={`form-input ${fieldErrors.email ? "error" : ""}`}>
             <label htmlFor="email">Your Email</label>
             <input
               type="email"
@@ -108,11 +108,11 @@ export default function ContactForm() {
               required
             />
             {fieldErrors.email && (
-              <small>Please input a valid email address</small>
+              <span>Please input a valid email address</span>
             )}
           </div>
 
-          <div>
+          <div className={`form-input ${fieldErrors.message ? "error" : ""}`}>
             <label htmlFor="message">Your Message</label>
             <textarea
               id="message"
@@ -124,11 +124,13 @@ export default function ContactForm() {
               rows="5"
               required
             />
-            {fieldErrors.message && <small>Please input a message</small>}
+            {fieldErrors.message && <span>Please input a message</span>}
           </div>
 
           {globalMessage && (
-            <p className="text-center text-lg font-semibold">{globalMessage}</p>
+            <p className="text-center text-lg font-semibold transition-opacity duration-300 opacity-100">
+              {globalMessage}
+            </p>
           )}
 
           <Button
