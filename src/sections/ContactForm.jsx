@@ -3,33 +3,59 @@ import { isEmail, isEmpty } from "../util/validation";
 import emailjs from "@emailjs/browser";
 import Button from "../components/Button";
 
-const FORM_DEFAULT_VALUE = { name: "", email: "", message: "" };
+const DEFAULT_FIELD_ERRORS_OBJ = { name: "", email: "", message: "" };
 
 export default function ContactForm() {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
-  const [form, setForm] = useState(FORM_DEFAULT_VALUE);
+  const [fieldErrors, setFieldErrors] = useState(DEFAULT_FIELD_ERRORS_OBJ);
+  const [globalMessage, setGlobalMessage] = useState(null);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+
+  function handleBlur(fieldName) {
+    let hasError = false;
+
+    if (fieldName === "name") {
+      hasError = isEmpty(nameRef.current.value);
+    } else if (fieldName === "email") {
+      hasError =
+        isEmpty(emailRef.current.value) || !isEmail(emailRef.current.value);
+    } else if (fieldName === "message") {
+      hasError = isEmpty(messageRef.current.value);
+    }
+
+    setFieldErrors((prev) => ({
+      ...prev,
+      [fieldName]: hasError,
+    }));
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     setLoading(true);
 
+    const nameError = isEmpty(nameRef.current.value);
+    const emailError =
+      isEmpty(emailRef.current.value) || !isEmail(emailRef.current.value);
+    const messageError = isEmpty(messageRef.current.value);
+
+    const hasError = nameError || emailError || messageError;
+
+    setFieldErrors({
+      name: nameError,
+      email: emailError,
+      message: messageError,
+    });
+
+    if (hasError) {
+      setLoading(false);
+      return;
+    }
+
     try {
-      if (isEmpty(form.name) || isEmpty(form.email) || isEmpty(form.message)) {
-        throw new Error("Please complete all fields.");
-      }
-
-      if (!isEmail(form.email)) {
-        throw new Error("Please use a valid email address.");
-      }
-
       await emailjs.sendForm(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
@@ -37,14 +63,13 @@ export default function ContactForm() {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
-      setForm(FORM_DEFAULT_VALUE);
-
-      setMessage("Thank you for your message! I'll be in touch soon.");
+      setGlobalMessage("✅ Thank you for your message! I'll be in touch soon.");
     } catch (error) {
-      setMessage(error.message);
-    } finally {
-      setLoading(false);
+      console.error(error);
+      setGlobalMessage("❌ Oops! Something went wrong. Please try again.");
     }
+
+    setLoading(false);
   }
 
   return (
@@ -62,11 +87,12 @@ export default function ContactForm() {
               id="name"
               name="name"
               data-testid="name"
-              value={form.name}
-              onChange={handleChange}
+              ref={nameRef}
+              onBlur={() => handleBlur("name")}
               placeholder="What’s your good name?"
               required
             />
+            {fieldErrors.name && <small>Please input your name</small>}
           </div>
 
           <div>
@@ -76,11 +102,14 @@ export default function ContactForm() {
               id="email"
               name="email"
               data-testid="email"
-              value={form.email}
-              onChange={handleChange}
+              ref={emailRef}
+              onBlur={() => handleBlur("email")}
               placeholder="What’s your email address?"
               required
             />
+            {fieldErrors.email && (
+              <small>Please input a valid email address</small>
+            )}
           </div>
 
           <div>
@@ -89,13 +118,18 @@ export default function ContactForm() {
               id="message"
               name="message"
               data-testid="message"
-              value={form.message}
-              onChange={handleChange}
+              ref={messageRef}
+              onBlur={() => handleBlur("message")}
               placeholder="How can I help you?"
               rows="5"
               required
             />
+            {fieldErrors.message && <small>Please input a message</small>}
           </div>
+
+          {globalMessage && (
+            <p className="text-center text-lg font-semibold">{globalMessage}</p>
+          )}
 
           <Button
             type="submit"
@@ -103,8 +137,6 @@ export default function ContactForm() {
             text={loading ? "Sending..." : "Send Message"}
             src={"/images/arrow-right.svg"}
           />
-
-          {message && <p className="text-white-50 text-xl italic">{message}</p>}
         </form>
       </div>
     </div>
