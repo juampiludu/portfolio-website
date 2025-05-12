@@ -73,8 +73,8 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="xl:col-span-5">
-      <div className="flex-center card-border rounded-xl p-10">
+    <div className="xl:col-span-5 card-border rounded-xl p-10">
+      <div className="flex-center">
         <form
           ref={formRef}
           onSubmit={handleSubmit}
@@ -140,6 +140,21 @@ export default function ContactForm() {
             src={"/images/arrow-right.svg"}
           />
         </form>
+      </div>
+
+      <div className="flex items-center gap-4 my-8">
+        <div className="flex-grow border-t border-gray-500"></div>
+        <span className="text-gray-300">OR</span>
+        <div className="flex-grow border-t border-gray-500"></div>
+      </div>
+
+      <div className="flex-center">
+        <p className="text-white-50 text-lg">
+          📧 Email Me:{" "}
+          <a href="mailto:juanluduena2001@gmail.com" className="underline">
+            juanluduena2001@gmail.com
+          </a>
+        </p>
       </div>
     </div>
   );
