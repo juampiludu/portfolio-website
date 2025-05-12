@@ -18,7 +18,7 @@ This repository is also a demonstration of how I organize and structure my proje
 ## 🚀 Live Site
 
 Check out the live version of my portfolio here:  
-👉 [https://juanpabloluduena.dev](#)
+👉 [https://juanpabloluduena.netlify.app](https://juanpabloluduena.netlify.app)
 
 ## 🛠 Tech Stack
 
@@ -26,7 +26,7 @@ Check out the live version of my portfolio here:
 - **Animations:** GSAP + ScrollTrigger
 - **3D Graphics:** Three.js
 - **Forms:** EmailJS
-- **Deployment:** TODO
+- **Deployment:** Netlify
 
 ## 📦 Getting Started
 
@@ -52,13 +52,13 @@ To run this project locally:
    ```
 
 4. Build for production:
-   
+
    ```bash
    npm run build
    ```
 
 5. Serve the production build:
-   
+
    ```bash
    serve -s dist
    ```
