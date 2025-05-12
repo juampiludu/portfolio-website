@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import Button from "../components/Button";
-import HeroExperience from "../components/HeroModels/HeroExperience";
+import HeroExperience from "../components/Models/HeroModels/HeroExperience";
 import { words } from "../constants/index";
 import gsap from "gsap";
 import AnimatedCounter from "../components/AnimatedCounter";
@@ -23,6 +23,20 @@ export default function Hero() {
     );
   });
 
+  function handleClick(e) {
+    e.preventDefault();
+
+    const target = document.getElementById("counter");
+
+    if (target) {
+      const offset = window.innerHeight * 0.15;
+
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }
+
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-0">
@@ -35,12 +49,12 @@ export default function Hero() {
           <div className="flex flex-col gap-7">
             <div className="hero-text">
               <h1>
-                Shaping
+                Transforming
                 <span className="slide">
                   <span className="wrapper">
-                    {words.map((word) => (
+                    {words.map((word, index) => (
                       <span
-                        key={word.text}
+                        key={index}
                         className="flex items-center md:gap-3 gap-1 pb-2"
                       >
                         <img
@@ -54,18 +68,20 @@ export default function Hero() {
                   </span>
                 </span>
               </h1>
-              <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
+              <h1>into Real Results</h1>
             </div>
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I'm Juan Pablo Ludueña, a web developer and Computer Science
-              student. <br /> Join me in the journey of my work experience and
-              academic projects.
+              Hi, I'm Juan Pablo Ludueña — a web developer and Computer Science
+              student. <br />
+              Join me in the journey of my work experience and academic
+              projects.
             </p>
             <Button
-              className="md:w-80 md:h-16 w-60 h-12"
+              className="md:w-80 md:h-16 w-60 h-12 cta-wrapper"
               id="button"
               text="See my Work"
+              src={"/images/arrow-down.svg"}
+              onClick={handleClick}
             />
           </div>
         </header>
@@ -76,7 +92,7 @@ export default function Hero() {
           </div>
         </figure>
       </div>
-      
+
       <AnimatedCounter />
     </section>
   );

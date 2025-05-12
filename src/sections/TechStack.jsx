@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import TechIcon from "../components/Models/TechLogos/TechIcon";
 import TitleHeader from "../components/TitleHeader";
-import { techStackIcons, techStackImgs } from "../constants/index";
+import { techStackIcons } from "../constants/index";
 import gsap from "gsap";
 
 export default function TechStack() {
@@ -27,8 +27,8 @@ export default function TechStack() {
     <div id="skills" className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
-          title="My Preferred Tech Stack"
-          sub="🤝 The Skills I Bring to the table"
+          title="How Can I Contribute & My Key Skills"
+          sub="🤝 What I Bring to the Table"
         />
 
         <div className="tech-grid">
@@ -50,7 +50,7 @@ export default function TechStack() {
           ))}
         </div>
 
-        <div className="tech-grid">
+        {/* <div className="tech-grid">
           {techStackImgs.map((icon) => (
             <div
               key={icon.name}
@@ -67,7 +67,7 @@ export default function TechStack() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

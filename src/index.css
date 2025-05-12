@@ -168,10 +168,10 @@ section {
       @apply h-full flex flex-col justify-between xl:w-[60%];
 
       .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
+        @apply xl:h-[70vh] md:h-[50vh] h-96 relative rounded-xl;
 
         img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
+          @apply w-full h-full object-contain rounded-xl absolute inset-0;
         }
       }
 
@@ -284,7 +284,7 @@ section {
 
     input,
     textarea {
-      @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md;
+      @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md transition-all duration-300 ease-out;
     }
 
     a {
@@ -292,6 +292,18 @@ section {
 
       img {
         @apply inline-block;
+      }
+    }
+
+    .form-input.error {
+
+      input,
+      textarea {
+        @apply border-red-700 border-2
+      }
+
+      span {
+        @apply text-red-700 transition-opacity duration-300 opacity-100
       }
     }
   }
