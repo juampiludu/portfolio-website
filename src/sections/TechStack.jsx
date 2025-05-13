@@ -1,8 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import TechIcon from "../components/Models/TechLogos/TechIcon";
 import TitleHeader from "../components/TitleHeader";
-import { techStackIcons } from "../constants/index";
+import { techStackIcons, techStackImgs } from "../constants/index";
 import gsap from "gsap";
+import { useMemo } from "react";
+import TechCard from "../components/TechCard";
 
 export default function TechStack() {
   useGSAP(() => {
@@ -23,6 +25,15 @@ export default function TechStack() {
     );
   });
 
+  // TODO: change this before pr
+  // const isMobile = useMemo(() => {
+  //   return typeof window !== "undefined" && window.mobileCheck?.();
+  // }, []);
+
+  const isMobile = true;
+
+  const techStack = isMobile ? techStackImgs : techStackIcons;
+
   return (
     <div id="skills" className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
@@ -32,42 +43,10 @@ export default function TechStack() {
         />
 
         <div className="tech-grid">
-          {techStackIcons.map((icon) => (
-            <div
-              key={icon.name}
-              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-            >
-              <div className="tech-card-content">
-                <div className="tech-icon-wrapper">
-                  <TechIcon model={icon} />
-                </div>
-
-                <div className="padding-x w-full">
-                  <p>{icon.name}</p>
-                </div>
-              </div>
-            </div>
+          {techStack.map((icon) => (
+            <TechCard icon={icon} isMobile={isMobile} key={icon.name} />
           ))}
         </div>
-
-        {/* <div className="tech-grid">
-          {techStackImgs.map((icon) => (
-            <div
-              key={icon.name}
-              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-            >
-              <div className="tech-card-content">
-                <div className="tech-icon-wrapper">
-                  <img src={icon.imgPath} alt={icon.name} />
-                </div>
-
-                <div className="padding-x w-full">
-                  <p>{icon.name}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div> */}
       </div>
     </div>
   );

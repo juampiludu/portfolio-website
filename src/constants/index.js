@@ -40,11 +40,11 @@ const abilities = [
 ];
 
 const techStackImgs = [
-  { name: "Python (Django, FastAPI)", imgPath: "/images/logos/python.svg" },
-  { name: "React", imgPath: "/images/logos/react.png" },
-  { name: "Docker", imgPath: "/images/logos/docker.svg" },
-  { name: "Git", imgPath: "/images/logos/git.svg" },
-  { name: "HTML & CSS", imgPath: "/images/logos/html-css.png" },
+  { name: "Python (Django, FastAPI)", imgPath: "/images/logos/python.webp" },
+  { name: "React", imgPath: "/images/logos/react.webp" },
+  { name: "Docker", imgPath: "/images/logos/docker.webp" },
+  { name: "Git", imgPath: "/images/logos/git.webp" },
+  { name: "HTML, CSS & JavaScript", imgPath: "/images/logos/html.webp" },
 ];
 
 const techStackIcons = [
@@ -102,19 +102,19 @@ const projects = [
     name: "El Switcher (Backend + Frontend)",
     description:
       "Real-time multiplayer game built with React and FastAPI using WebSockets. I developed both the frontend and backend. It's an academic project.",
-    imgPath: "/images/switcher.png",
+    imgPath: "/images/switcher.webp",
     repoLink: "https://github.com/Ctrl-Z-2024",
     bgColor: "#e1f2eb"
   },
   {
     name: "Buenaventura Agronegocios",
-    imgPath: "/images/buenaventura.png",
+    imgPath: "/images/buenaventura.webp",
     repoLink: "https://github.com/tobiasjpalacios/Buenaventura",
     bgColor: "#f6f1e7"
   },
   {
     name: "Graph Coloring Tool (Academic Project)",
-    imgPath: "/images/graph.png",
+    imgPath: "/images/graph.webp",
     repoLink: "https://github.com/juampiludu/discreta2-proyecto",
     bgColor: "#eeeeee"
   },
