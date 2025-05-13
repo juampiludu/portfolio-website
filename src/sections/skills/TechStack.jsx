@@ -1,10 +1,10 @@
 import { useGSAP } from "@gsap/react";
-import TitleHeader from "../components/TitleHeader";
-import { techStackList } from "../constants/index";
+import TitleHeader from "../../components/TitleHeader";
+import { techStackList } from "../../utils/constants";
 import gsap from "gsap";
 import { useContext } from "react";
-import TechCard from "../components/TechCard";
-import { DeviceContext } from "../context/DeviceContext";
+import TechCard from "../../components/TechCard";
+import { DeviceContext } from "../../context/DeviceContext";
 
 export default function TechStack() {
   const isMobile = useContext(DeviceContext);

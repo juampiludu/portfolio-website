@@ -1,4 +1,4 @@
-import { socialImgs } from "../constants/index";
+import { socialImgs } from "../utils/constants";
 
 export default function Footer() {
   return (

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { RectAreaLight } from "three";
-import { DeviceContext } from "../../../context/DeviceContext";
+import { DeviceContext } from "../../context/DeviceContext";
 
 export default function HeroLights() {
   const isMobile = useContext(DeviceContext);

@@ -1,4 +1,4 @@
-import TechIcon from "./Models/TechLogos/TechIcon";
+import TechIcon from "../Models/tech-icons/TechIcon";
 
 export default function TechCard({ icon, isMobile }) {
   return (
