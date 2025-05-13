@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import { isEmail, isEmpty } from "../util/validation";
+import { isEmail, isEmpty } from "../../utils/validation";
+import { ASSETS_PATH } from "../../utils/constants";
 import emailjs from "@emailjs/browser";
 import Button from "../../components/Button";
 
@@ -139,7 +140,7 @@ export default function ContactForm() {
             type="submit"
             disabled={loading}
             text={loading ? "Sending..." : "Send Message"}
-            src={"/images/arrow-right.svg"}
+            src={ASSETS_PATH + "/images/arrow-right.svg"}
           />
         </form>
       </div>

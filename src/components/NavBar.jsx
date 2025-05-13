@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { navLinks } from "../constants/index";
+import { navLinks } from "../utils/constants";
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);

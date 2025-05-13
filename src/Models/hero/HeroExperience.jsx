@@ -2,7 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import HeroLights from "./HeroLights";
 import { lazy, Suspense, useContext } from "react";
-import { DeviceContext } from "../../../context/DeviceContext";
+import { DeviceContext } from "../../context/DeviceContext";
 
 const Room = lazy(() => import("./Room"));
 

@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import TitleHeader from "../../components/TitleHeader";
-import { techStackList } from "../constants/index";
+import { techStackList } from "../../utils/constants";
 import gsap from "gsap";
 import { useContext } from "react";
 import TechCard from "../../components/TechCard";

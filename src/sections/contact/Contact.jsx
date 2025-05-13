@@ -1,5 +1,5 @@
 import TitleHeader from "../../components/TitleHeader";
-import ContactExperience from "../../components/Models/Contact/ContactExperience";
+import ContactExperience from "../../Models/contact/ContactExperience";
 import ContactForm from "./ContactForm";
 
 export default function Contact() {

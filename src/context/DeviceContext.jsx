@@ -1,5 +1,5 @@
 import { createContext, useMemo } from "react";
-import deviceIsMobile from "../util/device";
+import deviceIsMobile from "../utils/device";
 
 export const DeviceContext = createContext(false);
 

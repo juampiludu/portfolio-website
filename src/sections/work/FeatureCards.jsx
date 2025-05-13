@@ -1,4 +1,4 @@
-import { abilities } from "../constants/index";
+import { abilities } from "../../utils/constants";
 
 export default function FeatureCards() {
   return (

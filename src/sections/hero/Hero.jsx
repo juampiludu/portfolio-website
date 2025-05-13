@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import Button from "../../components/Button";
-import HeroExperience from "../../components/Models/hero/HeroExperience";
-import { words } from "../constants/index";
+import HeroExperience from "../../Models/hero/HeroExperience";
+import { words, ASSETS_PATH } from "../../utils/constants";
 import gsap from "gsap";
 import AnimatedCounter from "./AnimatedCounter";
 
@@ -40,7 +40,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-0">
-        <img src="/images/bg.png" alt="background" />
+        <img src={ASSETS_PATH + "/images/bg.png"} alt="background" />
       </div>
 
       <div className="hero-layout">
@@ -80,7 +80,7 @@ export default function Hero() {
               className="md:w-80 md:h-16 w-60 h-12 cta-wrapper"
               id="button"
               text="See my Work"
-              src={"/images/arrow-down.svg"}
+              src={ASSETS_PATH + "/images/arrow-down.svg"}
               onClick={handleClick}
             />
           </div>
