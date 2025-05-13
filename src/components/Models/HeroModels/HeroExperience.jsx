@@ -1,20 +1,26 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useMediaQuery } from "react-responsive";
-import Room from "./Room";
 import HeroLights from "./HeroLights";
+import { lazy, Suspense, useContext } from "react";
+import { DeviceContext } from "../../../context/DeviceContext";
+
+const Room = lazy(() => import("./Room"));
 
 export default function HeroExperience() {
-  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useContext(DeviceContext);
 
   return (
-    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+    <Canvas
+      camera={{ position: [0, 0, 15], fov: 45 }}
+      frameloop="demand"
+      dpr={isMobile ? 1 : [1, 2]}
+      antialias={(!isMobile).toString()}
+    >
       <HeroLights />
 
       <OrbitControls
         enablePan={false}
-        enableZoom={!isTablet && !isMobile}
+        enableZoom={!isMobile}
         maxDistance={20}
         minDistance={5}
         minPolarAngle={Math.PI / 5}
@@ -26,7 +32,9 @@ export default function HeroExperience() {
         position={[0, -3.5, 0]}
         rotation={[0, -Math.PI / 4, 0]}
       >
-        <Room />
+        <Suspense fallback={null}>
+          <Room />
+        </Suspense>
       </group>
     </Canvas>
   );

@@ -9,4 +9,16 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/setupTests.js",
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ["three"],
+          drei: ["@react-three/drei"],
+          fiber: ["@react-three/fiber"],
+          postprocessing: ["postprocessing", "@react-three/postprocessing"],
+        },
+      },
+    },
+  },
 });

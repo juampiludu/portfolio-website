@@ -1,10 +1,14 @@
 import { useGSAP } from "@gsap/react";
-import TechIcon from "../components/Models/TechLogos/TechIcon";
 import TitleHeader from "../components/TitleHeader";
-import { techStackIcons } from "../constants/index";
+import { techStackList } from "../constants/index";
 import gsap from "gsap";
+import { useContext } from "react";
+import TechCard from "../components/TechCard";
+import { DeviceContext } from "../context/DeviceContext";
 
 export default function TechStack() {
+  const isMobile = useContext(DeviceContext);
+
   useGSAP(() => {
     gsap.fromTo(
       ".tech-card",
@@ -32,42 +36,10 @@ export default function TechStack() {
         />
 
         <div className="tech-grid">
-          {techStackIcons.map((icon) => (
-            <div
-              key={icon.name}
-              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-            >
-              <div className="tech-card-content">
-                <div className="tech-icon-wrapper">
-                  <TechIcon model={icon} />
-                </div>
-
-                <div className="padding-x w-full">
-                  <p>{icon.name}</p>
-                </div>
-              </div>
-            </div>
+          {techStackList.map((icon) => (
+            <TechCard icon={icon} isMobile={isMobile} key={icon.name} />
           ))}
         </div>
-
-        {/* <div className="tech-grid">
-          {techStackImgs.map((icon) => (
-            <div
-              key={icon.name}
-              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-            >
-              <div className="tech-card-content">
-                <div className="tech-icon-wrapper">
-                  <img src={icon.imgPath} alt={icon.name} />
-                </div>
-
-                <div className="padding-x w-full">
-                  <p>{icon.name}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div> */}
       </div>
     </div>
   );
