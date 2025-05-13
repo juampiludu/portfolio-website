@@ -2,8 +2,8 @@ import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
-export default function TechIcon({ model }) {
-  const scene = useGLTF(model.modelPath);
+export default function TechIcon({ icon }) {
+  const scene = useGLTF(icon.modelPath);
 
   return (
     <Canvas>
@@ -18,7 +18,7 @@ export default function TechIcon({ model }) {
       <OrbitControls enableZoom={false} />
 
       <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
-        <group scale={model.scale} rotation={model.rotation}>
+        <group scale={icon.scale} rotation={icon.rotation}>
           <primitive object={scene.scene} />
         </group>
       </Float>

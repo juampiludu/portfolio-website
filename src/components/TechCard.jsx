@@ -9,7 +9,7 @@ export default function TechCard({ icon, isMobile }) {
       <div className="tech-card-content">
         <div className="tech-icon-wrapper">
           {isMobile && <img src={icon.imgPath} alt={icon.name} width={150} />}
-          {!isMobile && <TechIcon model={icon} />}
+          {!isMobile && <TechIcon icon={icon} />}
         </div>
 
         <div className="padding-x w-full">

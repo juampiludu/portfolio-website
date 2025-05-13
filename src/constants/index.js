@@ -39,41 +39,38 @@ const abilities = [
   },
 ];
 
-const techStackImgs = [
-  { name: "Python (Django, FastAPI)", imgPath: "/images/logos/python.webp" },
-  { name: "React", imgPath: "/images/logos/react.webp" },
-  { name: "Docker", imgPath: "/images/logos/docker.webp" },
-  { name: "Git", imgPath: "/images/logos/git.webp" },
-  { name: "HTML, CSS & JavaScript", imgPath: "/images/logos/html.webp" },
-];
-
-const techStackIcons = [
+const techStackList = [
   {
     name: "Python (Django, FastAPI)",
+    imgPath: "/images/logos/python.webp",
     modelPath: "/models/python-transformed.glb",
     scale: 0.8,
     rotation: [0, 0, 0],
   },
   {
     name: "React",
+    imgPath: "/images/logos/react.webp",
     modelPath: "/models/react_logo-transformed.glb",
     scale: 1,
     rotation: [0, 0, 0],
   },
   {
     name: "Docker",
+    imgPath: "/images/logos/docker.webp",
     modelPath: "/models/docker-transformed.glb",
     scale: 1.2,
     rotation: [0, 0, 0],
   },
   {
     name: "Git",
+    imgPath: "/images/logos/git.webp",
     modelPath: "/models/git-svg-transformed.glb",
     scale: 0.05,
     rotation: [0, -Math.PI / 4, 0],
   },
   {
     name: "HTML, CSS & JavaScript",
+    imgPath: "/images/logos/html.webp",
     modelPath: "/models/html-css-js-transformed.glb",
     scale: 0.03,
     rotation: [1.5, 0, 0],
@@ -101,22 +98,22 @@ const projects = [
   {
     name: "El Switcher (Backend + Frontend)",
     description:
-      "Real-time multiplayer game built with React and FastAPI using WebSockets. I developed both the frontend and backend. It's an academic project.",
+      "Real-time multiplayer game built with React and FastAPI using WebSockets. I developed both the frontend and backend.",
     imgPath: "/images/switcher.webp",
     repoLink: "https://github.com/Ctrl-Z-2024",
-    bgColor: "#e1f2eb"
+    bgColor: "#e1f2eb",
   },
   {
     name: "Buenaventura Agronegocios",
     imgPath: "/images/buenaventura.webp",
     repoLink: "https://github.com/tobiasjpalacios/Buenaventura",
-    bgColor: "#f6f1e7"
+    bgColor: "#f6f1e7",
   },
   {
-    name: "Graph Coloring Tool (Academic Project)",
+    name: "Graph Coloring Tool",
     imgPath: "/images/graph.webp",
     repoLink: "https://github.com/juampiludu/discreta2-proyecto",
-    bgColor: "#eeeeee"
+    bgColor: "#eeeeee",
   },
 ];
 
@@ -124,12 +121,12 @@ const socialImgs = [
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",
-    url: "https://www.linkedin.com/in/juan-pablo-luduena/"
+    url: "https://www.linkedin.com/in/juan-pablo-luduena/",
   },
   {
     name: "github",
     imgPath: "/images/github.png",
-    url: "https://github.com/juampiludu"
+    url: "https://github.com/juampiludu",
   },
 ];
 
@@ -140,7 +137,6 @@ export {
   expCards,
   projects,
   socialImgs,
-  techStackIcons,
-  techStackImgs,
+  techStackList,
   navLinks,
 };

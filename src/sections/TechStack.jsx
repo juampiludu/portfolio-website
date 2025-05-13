@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import TitleHeader from "../components/TitleHeader";
-import { techStackIcons, techStackImgs } from "../constants/index";
+import { techStackList } from "../constants/index";
 import gsap from "gsap";
 import { useContext } from "react";
 import TechCard from "../components/TechCard";
@@ -27,8 +27,6 @@ export default function TechStack() {
     );
   });
 
-  const techStack = isMobile ? techStackImgs : techStackIcons;
-
   return (
     <div id="skills" className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
@@ -38,7 +36,7 @@ export default function TechStack() {
         />
 
         <div className="tech-grid">
-          {techStack.map((icon) => (
+          {techStackList.map((icon) => (
             <TechCard icon={icon} isMobile={isMobile} key={icon.name} />
           ))}
         </div>
