@@ -1,9 +1,10 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import Room from "./Room";
 import HeroLights from "./HeroLights";
-import { useContext } from "react";
+import { lazy, Suspense, useContext } from "react";
 import { DeviceContext } from "../../../context/DeviceContext";
+
+const Room = lazy(() => import("./Room"));
 
 export default function HeroExperience() {
   const isMobile = useContext(DeviceContext);
@@ -31,7 +32,9 @@ export default function HeroExperience() {
         position={[0, -3.5, 0]}
         rotation={[0, -Math.PI / 4, 0]}
       >
-        <Room />
+        <Suspense fallback={null}>
+          <Room />
+        </Suspense>
       </group>
     </Canvas>
   );

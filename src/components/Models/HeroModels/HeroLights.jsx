@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import * as THREE from "three";
+import { RectAreaLight } from "three";
 import { DeviceContext } from "../../../context/DeviceContext";
 
 export default function HeroLights() {
@@ -34,7 +34,7 @@ export default function HeroLights() {
       )}
 
       <primitive
-        object={new THREE.RectAreaLight("#a259ff", 8, 3, 2)}
+        object={new RectAreaLight("#a259ff", 8, 3, 2)}
         position={[1, 3, 4]}
         intensity={15}
         rotation={[-Math.PI / 4, Math.PI / 4, 0]}

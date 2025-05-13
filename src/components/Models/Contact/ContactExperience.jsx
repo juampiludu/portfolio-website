@@ -1,9 +1,10 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
-import Computer from "./Computer";
-import { useContext } from "react";
+import { lazy, Suspense, useContext } from "react";
 import { DeviceContext } from "../../../context/DeviceContext";
+
+const Computer = lazy(() => import("./Computer"));
 
 const ContactExperience = () => {
   const isMobile = useContext(DeviceContext);
@@ -45,7 +46,9 @@ const ContactExperience = () => {
       </group>
 
       <group scale={0.03} position={[0, -1.49, -2]} castShadow>
-        <Computer />
+        <Suspense fallback={null}>
+          <Computer />
+        </Suspense>
       </group>
     </Canvas>
   );
