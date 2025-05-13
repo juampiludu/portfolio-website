@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+// Credits to http://detectmobilebrowsers.com/ for the function
 
 export default function deviceIsMobile() {
   let check = false;

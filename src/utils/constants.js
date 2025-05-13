@@ -48,10 +48,11 @@ const words = [
   { text: "Growth", imgPath: Words4Img },
 ];
 
+// Data fetched from GitHub GraphQL API
 const counterItems = [
-  { value: 3, suffix: "+", label: "Years of Experience" },
-  { value: 4, suffix: "+", label: "Completed Projects" },
-  { value: 1, suffix: "", label: "React Developer Certificate" },
+  { value: 700, suffix: "+", label: "GitHub Contributions" },
+  { value: 20, suffix: "+", label: "Pull Requests" },
+  { value: 8, suffix: "+", label: "Years of Learning" },
 ];
 
 const abilities = [
