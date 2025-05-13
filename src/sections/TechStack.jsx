@@ -1,12 +1,14 @@
 import { useGSAP } from "@gsap/react";
-import TechIcon from "../components/Models/TechLogos/TechIcon";
 import TitleHeader from "../components/TitleHeader";
 import { techStackIcons, techStackImgs } from "../constants/index";
 import gsap from "gsap";
-import { useMemo } from "react";
+import { useContext } from "react";
 import TechCard from "../components/TechCard";
+import { DeviceContext } from "../context/DeviceContext";
 
 export default function TechStack() {
+  const isMobile = useContext(DeviceContext);
+
   useGSAP(() => {
     gsap.fromTo(
       ".tech-card",
@@ -24,13 +26,6 @@ export default function TechStack() {
       }
     );
   });
-
-  // TODO: change this before pr
-  // const isMobile = useMemo(() => {
-  //   return typeof window !== "undefined" && window.mobileCheck?.();
-  // }, []);
-
-  const isMobile = true;
 
   const techStack = isMobile ? techStackImgs : techStackIcons;
 

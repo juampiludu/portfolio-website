@@ -7,10 +7,11 @@ import Experience from "./sections/Experience";
 import TechStack from "./sections/TechStack";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
+import DeviceProvider from "./context/DeviceContext";
 
 const App = () => {
   return (
-    <React.StrictMode>
+    <DeviceProvider>
       <NavBar />
       <Hero />
       <Showcase />
@@ -21,7 +22,7 @@ const App = () => {
       {/* FEAT: TESTIMONIALS */}
       <Contact />
       <Footer />
-    </React.StrictMode>
+    </DeviceProvider>
   );
 };
 

@@ -2,11 +2,21 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
 import Computer from "./Computer";
+import { useContext } from "react";
+import { DeviceContext } from "../../../context/DeviceContext";
 
 const ContactExperience = () => {
+  const isMobile = useContext(DeviceContext);
+
   return (
-    <Canvas shadows camera={{ position: [0, 3, 7], fov: 45 }}>
-      <ambientLight intensity={0.5} color="#fff4e6" />
+    <Canvas
+      shadows={!isMobile}
+      camera={{ position: [0, 3, 7], fov: 45 }}
+      frameloop="demand"
+      dpr={isMobile ? 1 : [1, 2]}
+      antialias={!isMobile}
+    >
+      <ambientLight intensity={isMobile ? 0.1 : 0.5} color="#fff4e6" />
 
       <directionalLight position={[5, 5, 3]} intensity={2.5} color="#ffd9b3" />
 
@@ -25,7 +35,7 @@ const ContactExperience = () => {
 
       <group scale={[1, 1, 1]}>
         <mesh
-          receiveShadow
+          receiveShadow={!isMobile}
           position={[0, -1.5, 0]}
           rotation={[-Math.PI / 2, 0, 0]}
         >
