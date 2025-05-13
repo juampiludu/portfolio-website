@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { isEmail, isEmpty } from "../../utils/validation";
-import { ASSETS_PATH } from "../../utils/constants";
 import emailjs from "@emailjs/browser";
 import Button from "../../components/Button";
+import ArrowRightImg from "@assets/images/arrow-right.svg";
 
 const DEFAULT_FIELD_ERRORS_OBJ = { name: "", email: "", message: "" };
 
@@ -140,7 +140,7 @@ export default function ContactForm() {
             type="submit"
             disabled={loading}
             text={loading ? "Sending..." : "Send Message"}
-            src={ASSETS_PATH + "/images/arrow-right.svg"}
+            src={ArrowRightImg}
           />
         </form>
       </div>
