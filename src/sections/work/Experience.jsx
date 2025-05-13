@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import TitleHeader from "../components/TitleHeader";
+import TitleHeader from "../../components/TitleHeader";
 import { expCards } from "../constants/index";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";

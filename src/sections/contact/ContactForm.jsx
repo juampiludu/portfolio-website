@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { isEmail, isEmpty } from "../util/validation";
 import emailjs from "@emailjs/browser";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 
 const DEFAULT_FIELD_ERRORS_OBJ = { name: "", email: "", message: "" };
 

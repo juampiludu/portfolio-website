@@ -1,9 +1,9 @@
 import { useGSAP } from "@gsap/react";
-import Button from "../components/Button";
-import HeroExperience from "../components/Models/HeroModels/HeroExperience";
+import Button from "../../components/Button";
+import HeroExperience from "../../components/Models/hero/HeroExperience";
 import { words } from "../constants/index";
 import gsap from "gsap";
-import AnimatedCounter from "../components/AnimatedCounter";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function Hero() {
   useGSAP(() => {
