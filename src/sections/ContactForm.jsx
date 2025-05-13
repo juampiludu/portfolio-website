@@ -63,6 +63,8 @@ export default function ContactForm() {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
+      formRef.current.reset();
+      setFieldErrors(DEFAULT_FIELD_ERRORS_OBJ);
       setGlobalMessage("✅ Thank you for your message! I'll be in touch soon.");
     } catch (error) {
       console.error(error);

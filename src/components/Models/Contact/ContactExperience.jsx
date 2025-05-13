@@ -14,7 +14,7 @@ const ContactExperience = () => {
       camera={{ position: [0, 3, 7], fov: 45 }}
       frameloop="demand"
       dpr={isMobile ? 1 : [1, 2]}
-      antialias={!isMobile}
+      antialias={(!isMobile).toString()}
     >
       <ambientLight intensity={isMobile ? 0.1 : 0.5} color="#fff4e6" />
 

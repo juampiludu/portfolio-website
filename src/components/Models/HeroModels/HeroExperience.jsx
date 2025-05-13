@@ -13,7 +13,7 @@ export default function HeroExperience() {
       camera={{ position: [0, 0, 15], fov: 45 }}
       frameloop="demand"
       dpr={isMobile ? 1 : [1, 2]}
-      antialias={!isMobile}
+      antialias={(!isMobile).toString()}
     >
       <HeroLights />
 

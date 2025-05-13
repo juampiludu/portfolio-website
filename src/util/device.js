@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 
-window.mobileCheck = function () {
+export default function deviceIsMobile() {
   let check = false;
   (function (a) {
     if (
@@ -14,4 +14,4 @@ window.mobileCheck = function () {
       check = true;
   })(navigator.userAgent || navigator.vendor || window.opera);
   return check;
-};
+}
