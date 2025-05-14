@@ -45,19 +45,27 @@ To run this project locally:
    npm install
    ```
 
-3. Start the development server:
+3. Create a `.env` file in the root directory with:
+   ```bash
+   VITE_APP_EMAILJS_SERVICE_ID=your_service_id
+   VITE_APP_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_APP_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+   > ⚠️ These values are required to make the contact form work via [EmailJS](https://www.emailjs.com/).
+
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+5. Build for production:
 
    ```bash
    npm run build
    ```
 
-5. Serve the production build:
+6. Serve the production build:
 
    ```bash
    serve -s dist
