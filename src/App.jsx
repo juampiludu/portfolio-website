@@ -1,16 +1,17 @@
 import React from "react";
-import Hero from "./sections/Hero";
-import Showcase from "./sections/Showcase";
+import Hero from "./sections/hero/Hero";
+import Showcase from "./sections/projects/Showcase";
 import NavBar from "./components/NavBar";
-import FeatureCards from "./sections/FeatureCards";
-import Experience from "./sections/Experience";
-import TechStack from "./sections/TechStack";
-import Contact from "./sections/Contact";
-import Footer from "./sections/Footer";
+import FeatureCards from "./sections/work/FeatureCards";
+import Experience from "./sections/work/Experience";
+import TechStack from "./sections/skills/TechStack";
+import Contact from "./sections/contact/Contact";
+import Footer from "./components/Footer";
+import DeviceProvider from "./context/DeviceContext";
 
 const App = () => {
   return (
-    <React.StrictMode>
+    <DeviceProvider>
       <NavBar />
       <Hero />
       <Showcase />
@@ -21,7 +22,7 @@ const App = () => {
       {/* FEAT: TESTIMONIALS */}
       <Contact />
       <Footer />
-    </React.StrictMode>
+    </DeviceProvider>
   );
 };
 
