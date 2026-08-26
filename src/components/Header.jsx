@@ -9,10 +9,7 @@ export default function Header() {
             juampiludu<span>/</span>portfolio
           </a>
 
-          <nav
-            aria-label="Sections"
-            className="hidden md:flex items-center gap-6"
-          >
+          <nav aria-label="Sections" className="masthead-nav">
             {navLinks.map((item) => (
               <a key={item.href} href={item.href} className="navlink">
                 {item.name}

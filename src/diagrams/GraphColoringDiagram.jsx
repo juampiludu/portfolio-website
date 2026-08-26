@@ -1,50 +1,5 @@
 import useReplay from "../hooks/useReplay";
-
-const CENTER = { x: 280, y: 132 };
-const RING = 8;
-
-/* A wheel: one hub joined to an 8-cycle. Laid out on an ellipse so it fits
-   the frame without the nodes crowding. */
-const nodes = [
-  CENTER,
-  ...Array.from({ length: RING }, (_, i) => {
-    const angle = (-90 + i * (360 / RING)) * (Math.PI / 180);
-    return {
-      x: CENTER.x + Math.cos(angle) * 208,
-      y: CENTER.y + Math.sin(angle) * 96,
-    };
-  }),
-];
-
-const edges = [
-  ...Array.from({ length: RING }, (_, i) => [0, i + 1]),
-  ...Array.from({ length: RING }, (_, i) => [i + 1, ((i + 1) % RING) + 1]),
-];
-
-const adjacency = nodes.map(() => []);
-for (const [a, b] of edges) {
-  adjacency[a].push(b);
-  adjacency[b].push(a);
-}
-
-/**
- * The same greedy pass the C tool makes: walk the vertices in order and give
- * each one the lowest color none of its already-colored neighbors holds.
- */
-function greedyColoring() {
-  const colors = new Array(nodes.length).fill(-1);
-
-  for (let v = 0; v < nodes.length; v++) {
-    const taken = new Set(
-      adjacency[v].map((n) => colors[n]).filter((c) => c !== -1)
-    );
-    let color = 0;
-    while (taken.has(color)) color++;
-    colors[v] = color;
-  }
-
-  return colors;
-}
+import { edges, greedyColoring, nodes } from "./graphModel";
 
 const colors = greedyColoring();
 const colorsUsed = new Set(colors).size;

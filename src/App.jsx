@@ -10,8 +10,11 @@ import Work from "./sections/Work";
 export default function App() {
   return (
     <>
+      <a href="#main" className="skip">
+        Skip to content
+      </a>
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Masthead />
         <Experience />
         <Work />
