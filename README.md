@@ -1,76 +1,100 @@
-<h1 align=center>Portfolio Website</h1>
+# Portfolio Website
 
-Hi! I'm Juan Pablo Ludueña, a web developer and Computer Science student.  
-This is the source code for my personal portfolio website — built to showcase my projects, skills, and experience as a Django / React developer.
+I am Juan Pablo Ludueña, a full stack developer and Computer Science student.
+This is the source code for my personal portfolio: a single page I designed to
+read like a technical paper — near-black ground, one signal blue, numbered
+sections and numbered figures, IBM Plex Sans for reading and IBM Plex Mono for
+everything structural.
 
-This repository is also a demonstration of how I organize and structure my projects: clean code, modular components, and production-ready practices.
+The two project diagrams are the centrepiece of the design. I wrote both as
+inline SVG, with no charting or animation dependency: one traces a move through
+El Switcher's WebSocket layer, the other runs the same greedy vertex coloring
+my C tool implements and colors a nine-vertex graph with it.
 
-## ✨ Features
+Live at <https://juanpabloluduena.netlify.app>.
 
-- Fully responsive design (desktop & mobile)
-- Modern 3D hero section using Three.js
-- Animated showcase of projects with GSAP
-- Contact form with EmailJS integration
-- Dark theme with TailwindCSS
-- Built with Vite for fast performance
-- Organized in feature-based folders and clean component structure
+## Highlights
 
-## 🚀 Live Site
+- Two hand-built SVG diagrams that replay their animation on a loop.
+- A single dark palette — black and blue — with no gradients anywhere.
+- No animation or 3D library: CSS animation plus one visibility hook.
+- A contact form backed by EmailJS and covered by Vitest.
+- Copy kept out of the markup, in `src/content/`.
+- Keyboard navigable with visible focus, and `prefers-reduced-motion` honoured.
 
-Check out the live version of my portfolio here:  
-👉 [https://juanpabloluduena.netlify.app](https://juanpabloluduena.netlify.app)
+## Tech stack
 
-## 🛠 Tech Stack
+| Area | Choice |
+|---|---|
+| Frontend | React 19, Vite 6, Tailwind CSS v4 |
+| Type | IBM Plex Sans (reading), IBM Plex Mono (labels, data, captions) |
+| Forms | EmailJS |
+| Testing | Vitest, React Testing Library |
+| Deployment | Netlify |
 
-- **Frontend:** React + Vite + TailwindCSS
-- **Animations:** GSAP + ScrollTrigger
-- **3D Graphics:** Three.js
-- **Forms:** EmailJS
-- **Deployment:** Netlify
+## Project structure
 
-## 📦 Getting Started
+```
+public/       favicons, Open Graph image, CV
+src/
+  content/    profile, projects, experience, stack — all copy lives here
+  sections/   Masthead, Experience, Work, Stack, Education, Contact
+  diagrams/   the two inline-SVG figures and the graph model
+  components/ Section, Header, Footer, ExternalLink
+  hooks/      useReplay
+  utils/      validation
+  index.css   design tokens and every component class
+```
 
-To run this project locally:
+## Getting started
 
-1. Clone the repository:
+Requires Node.js 20 or newer.
+
+1. Clone the repository and install dependencies:
 
    ```bash
    git clone https://github.com/juampiludu/portfolio-website.git
    cd portfolio-website
-   ```
-
-2. Install dependencies:
-
-   ```bash
    npm install
    ```
 
-3. Create a `.env` file in the root directory with:
-   ```bash
-   VITE_APP_EMAILJS_SERVICE_ID=your_service_id
-   VITE_APP_EMAILJS_TEMPLATE_ID=your_template_id
-   VITE_APP_EMAILJS_PUBLIC_KEY=your_public_key
-   ```
-   > ⚠️ These values are required to make the contact form work via [EmailJS](https://www.emailjs.com/).
+2. Create the environment file. Copy the committed template to `.env` in the
+   project root, the same directory as `package.json`:
 
-4. Start the development server:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Then fill in the three EmailJS values. `.env.example` documents where each
+   one is found in the EmailJS dashboard. `.env` is gitignored and must not be
+   committed; my deployed site reads the same three variables from the Netlify
+   dashboard instead.
+
+   ```bash
+   VITE_APP_EMAILJS_SERVICE_ID=
+   VITE_APP_EMAILJS_TEMPLATE_ID=
+   VITE_APP_EMAILJS_PUBLIC_KEY=
+   ```
+
+   Without them the site still builds and runs; only the contact form stops
+   delivering.
+
+3. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-5. Build for production:
+## Scripts
 
-   ```bash
-   npm run build
-   ```
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Produce the production bundle in `dist/` |
+| `npm run preview` | Serve the built bundle locally |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run the Vitest suite once |
 
-6. Serve the production build:
+## License
 
-   ```bash
-   serve -s dist
-   ```
-
-## 📄 License
-
-The source code is available under the [MIT License](https://opensource.org/license/mit).
+I release this code under the [MIT License](LICENSE).

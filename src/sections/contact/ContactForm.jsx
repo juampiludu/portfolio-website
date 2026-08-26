@@ -1,8 +1,6 @@
-import React, { useRef, useState } from "react";
-import { isEmail, isEmpty } from "../../utils/validation";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import Button from "../../components/Button";
-import ArrowRightImg from "@assets/images/arrow-right.svg";
+import { isEmail, isEmpty } from "../../utils/validation";
 
 const DEFAULT_FIELD_ERRORS_OBJ = { name: "", email: "", message: "" };
 
@@ -66,99 +64,93 @@ export default function ContactForm() {
 
       formRef.current.reset();
       setFieldErrors(DEFAULT_FIELD_ERRORS_OBJ);
-      setGlobalMessage("✅ Thank you for your message! I'll be in touch soon.");
+      setGlobalMessage({
+        tone: "ok",
+        text: "Thank you for your message. I'll be in touch soon.",
+      });
     } catch (error) {
       console.error(error);
-      setGlobalMessage("❌ Oops! Something went wrong. Please try again.");
+      setGlobalMessage({
+        tone: "error",
+        text: "Something went wrong sending that. Email me directly instead.",
+      });
     }
 
     setLoading(false);
   }
 
   return (
-    <div className="xl:col-span-5 card-border rounded-xl p-10">
-      <div className="flex-center">
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="w-full flex flex-col gap-7"
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
+      <div className={`field ${fieldErrors.name ? "field--error" : ""}`}>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          data-testid="name"
+          ref={nameRef}
+          onBlur={() => handleBlur("name")}
+          placeholder="Who's writing?"
+          required
+        />
+        {fieldErrors.name && (
+          <span className="field__error">Add your name</span>
+        )}
+      </div>
+
+      <div className={`field ${fieldErrors.email ? "field--error" : ""}`}>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          data-testid="email"
+          ref={emailRef}
+          onBlur={() => handleBlur("email")}
+          placeholder="Where should the reply go?"
+          required
+        />
+        {fieldErrors.email && (
+          <span className="field__error">
+            That address doesn't look complete
+          </span>
+        )}
+      </div>
+
+      <div className={`field ${fieldErrors.message ? "field--error" : ""}`}>
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          data-testid="message"
+          ref={messageRef}
+          onBlur={() => handleBlur("message")}
+          placeholder="What are you building?"
+          rows="5"
+          required
+        />
+        {fieldErrors.message && (
+          <span className="field__error">Add a message</span>
+        )}
+      </div>
+
+      <button type="submit" className="btn" disabled={loading}>
+        {loading ? "Sending…" : "Send message"}
+      </button>
+
+      {globalMessage && (
+        <p
+          role="status"
+          className="mono"
+          style={
+            globalMessage.tone === "error"
+              ? { color: "var(--color-accent)" }
+              : undefined
+          }
         >
-          <div className={`form-input ${fieldErrors.name ? "error" : ""}`}>
-            <label htmlFor="name">Your name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              data-testid="name"
-              ref={nameRef}
-              onBlur={() => handleBlur("name")}
-              placeholder="What’s your good name?"
-              required
-            />
-            {fieldErrors.name && <span>Please input your name</span>}
-          </div>
-
-          <div className={`form-input ${fieldErrors.email ? "error" : ""}`}>
-            <label htmlFor="email">Your Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              data-testid="email"
-              ref={emailRef}
-              onBlur={() => handleBlur("email")}
-              placeholder="What’s your email address?"
-              required
-            />
-            {fieldErrors.email && (
-              <span>Please input a valid email address</span>
-            )}
-          </div>
-
-          <div className={`form-input ${fieldErrors.message ? "error" : ""}`}>
-            <label htmlFor="message">Your Message</label>
-            <textarea
-              id="message"
-              name="message"
-              data-testid="message"
-              ref={messageRef}
-              onBlur={() => handleBlur("message")}
-              placeholder="How can I help you?"
-              rows="5"
-              required
-            />
-            {fieldErrors.message && <span>Please input a message</span>}
-          </div>
-
-          {globalMessage && (
-            <p className="text-center text-lg font-semibold transition-opacity duration-300 opacity-100">
-              {globalMessage}
-            </p>
-          )}
-
-          <Button
-            type="submit"
-            disabled={loading}
-            text={loading ? "Sending..." : "Send Message"}
-            src={ArrowRightImg}
-          />
-        </form>
-      </div>
-
-      <div className="flex items-center gap-4 my-8">
-        <div className="flex-grow border-t border-gray-500"></div>
-        <span className="text-gray-300">OR</span>
-        <div className="flex-grow border-t border-gray-500"></div>
-      </div>
-
-      <div className="flex-center">
-        <p className="text-white-50 text-lg">
-          📧 Email Me:{" "}
-          <a href="mailto:juanluduena2001@gmail.com" className="underline">
-            juanluduena2001@gmail.com
-          </a>
+          {globalMessage.text}
         </p>
-      </div>
-    </div>
+      )}
+    </form>
   );
 }
