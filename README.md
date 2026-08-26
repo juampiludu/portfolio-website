@@ -1,36 +1,50 @@
 <h1 align=center>Portfolio Website</h1>
 
-Hi! I'm Juan Pablo Ludueña, a web developer and Computer Science student.  
-This is the source code for my personal portfolio website — built to showcase my projects, skills, and experience as a Django / React developer.
+Hi! I'm Juan Pablo Ludueña, a full stack developer and Computer Science student.
+This is the source code for my personal portfolio — a single page built to read
+like a technical paper: near-black ground, one signal blue, numbered sections and
+numbered figures. IBM Plex Sans for reading, IBM Plex Mono for everything
+structural. No gradients, no UI kit, no animation library.
 
-This repository is also a demonstration of how I organize and structure my projects: clean code, modular components, and production-ready practices.
+The two project diagrams are the point of the design. They are hand-written inline
+SVG with no charting or animation library: one traces a move through El Switcher's
+WebSocket layer, the other runs the same greedy vertex coloring the C tool does and
+colors a nine-vertex graph with it.
 
 ## ✨ Features
 
-- Fully responsive design (desktop & mobile)
-- Modern 3D hero section using Three.js
-- Animated showcase of projects with GSAP
-- Contact form with EmailJS integration
-- Dark theme with TailwindCSS
-- Built with Vite for fast performance
-- Organized in feature-based folders and clean component structure
+- Two hand-built SVG diagrams that replay their animation on a loop
+- One dark palette, black and blue, with no gradients anywhere
+- No animation or 3D library — CSS plus one IntersectionObserver hook
+- Contact form with EmailJS integration, covered by Vitest
+- Content separated from markup in `src/content/`
+- Keyboard-navigable with visible focus, and `prefers-reduced-motion` respected
 
 ## 🚀 Live Site
 
-Check out the live version of my portfolio here:  
 👉 [https://juanpabloluduena.netlify.app](https://juanpabloluduena.netlify.app)
 
 ## 🛠 Tech Stack
 
-- **Frontend:** React + Vite + TailwindCSS
-- **Animations:** GSAP + ScrollTrigger
-- **3D Graphics:** Three.js
+- **Frontend:** React 19 + Vite 6 + Tailwind CSS v4
+- **Type:** IBM Plex Sans (reading) + IBM Plex Mono (labels, data, captions)
 - **Forms:** EmailJS
+- **Testing:** Vitest + React Testing Library
 - **Deployment:** Netlify
 
-## 📦 Getting Started
+## 📁 Structure
 
-To run this project locally:
+```
+src/
+  content/    profile, projects, experience, stack — all copy lives here
+  sections/   Masthead, Experience, Work, Stack, Education, Contact
+  diagrams/   the two inline-SVG project diagrams
+  components/ Section, ExternalLink, Header, Footer
+  hooks/      useReplay
+  index.css   design tokens and every component class
+```
+
+## 📦 Getting Started
 
 1. Clone the repository:
 
@@ -46,11 +60,13 @@ To run this project locally:
    ```
 
 3. Create a `.env` file in the root directory with:
+
    ```bash
    VITE_APP_EMAILJS_SERVICE_ID=your_service_id
    VITE_APP_EMAILJS_TEMPLATE_ID=your_template_id
    VITE_APP_EMAILJS_PUBLIC_KEY=your_public_key
    ```
+
    > ⚠️ These values are required to make the contact form work via [EmailJS](https://www.emailjs.com/).
 
 4. Start the development server:
@@ -59,16 +75,17 @@ To run this project locally:
    npm run dev
    ```
 
-5. Build for production:
+5. Run the tests:
+
+   ```bash
+   npm test
+   ```
+
+6. Build and preview the production bundle:
 
    ```bash
    npm run build
-   ```
-
-6. Serve the production build:
-
-   ```bash
-   serve -s dist
+   npm run preview
    ```
 
 ## 📄 License
