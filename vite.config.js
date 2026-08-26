@@ -12,25 +12,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
-      "@assets": resolve(__dirname, "src/assets"),
     },
   },
-  assetsInclude: ["**/*.glb"],
   test: {
     globals: true,
     environment: "jsdom",
     setupFiles: "./src/setupTests.js",
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          three: ["three"],
-          drei: ["@react-three/drei"],
-          fiber: ["@react-three/fiber"],
-          postprocessing: ["postprocessing", "@react-three/postprocessing"],
-        },
-      },
-    },
   },
 });
