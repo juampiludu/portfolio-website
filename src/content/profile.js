@@ -1,7 +1,6 @@
 export const profile = {
   name: "Juan Pablo Ludueña",
   roleLine: "Full stack developer · Córdoba, Argentina",
-  thesis: "Most of my work is backend: data models and APIs, containerized and deployed, with the frontend built on top when the project needs it.",
   intro:
     "Three years building and maintaining an agribusiness platform at Buenaventura — designing the database models each new requirement needed, containerizing the services with Docker and keeping the AWS instances healthy. Now finishing a Computer Science degree at Universidad Nacional de Córdoba, and building with FastAPI and React on my own time.",
   email: "juanluduena2001@gmail.com",

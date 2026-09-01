@@ -8,8 +8,6 @@ export default function Masthead() {
 
       <h1 className="display mt-4">{profile.name}</h1>
 
-      <p className="thesis measure mt-6">{profile.thesis}</p>
-
       <p className="lead measure mt-5">{profile.intro}</p>
 
       <dl className="spec mt-12 max-w-2xl">
