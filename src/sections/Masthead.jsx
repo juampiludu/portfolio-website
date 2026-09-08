@@ -28,7 +28,7 @@ export default function Masthead() {
             {social.name}
           </ExternalLink>
         ))}
-        <ExternalLink href={profile.resume}>Résumé, PDF</ExternalLink>
+        <ExternalLink href={profile.resume}>Resume, PDF</ExternalLink>
       </div>
     </section>
   );
