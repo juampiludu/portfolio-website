@@ -4,14 +4,14 @@
  * Design tokens
  *
  * Near-black ground, one signal blue, nothing else. No gradients.
- * Type is a single superfamily: IBM Plex Sans for reading, IBM Plex Mono
+ * Type is a single superfamily: Fira Sans for reading, Fira Mono
  * for everything structural — labels, data, section numbers, captions.
  * Mono is load-bearing here, not decoration.
  * ------------------------------------------------------------------ */
 
 @theme static {
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Fira Mono", ui-monospace, SFMono-Regular, monospace;
 
   --color-bg: #08090c;
   --color-surface: #0e1015;
